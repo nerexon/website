@@ -2,39 +2,3 @@ body {
     margin: 0;
 }
 
-nav { 
-    text-align: center;
-}
-
-.aButton {
-    display: inline-block;
-    padding: 15px 30px;
-    background-color: #1058a5;
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 125%;
-  }
-  
-  .aButton:hover {
-    background-color: #053c77d5;
-   
-  }
-
-  header {
-    background-color: rgb(58, 199, 180);
-    background-image: radial-gradient(#3ac7b4, #21795d );
-    padding-bottom : 1%;
-    margin-bottom: 0;
-    user-select: none;
-  }
-
-  h1 {
-    margin-top: 0;
-    padding-top : 2%;
-    font-size: 400%;
-    text-align: center;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    color: conic-gradient(#553c9a 0%, #553c9a 33%, #ee4b2b 33%, #ee4b2b 66%, #00c2cb 66%, #00c2cb 99%);
-  }
