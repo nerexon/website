@@ -7,8 +7,15 @@
     border-top: 5px solid #3498db; /* Top border for separation */
 }
 
+#footer > div,
+#footer > section {
+    background-color: #34495e; /* Match the footer's background color */
+    margin: 10px 0; /* Add a small margin between sections to prevent large gaps */
+    padding: 10px; /* Optional: Add padding inside sections for spacing */
+}
+
 .footer-heading {
-    margin: 20px 0 10px;
+    margin: 10px 0; /* Reduced margin for less space above and below the heading */
     font-size: 1.8em; /* Larger font for headings */
     color: #3498db; /* Headings in a distinct color */
     text-transform: uppercase; /* Uppercase for emphasis */
@@ -22,7 +29,7 @@
 }
 
 .footer-links li {
-    margin: 10px 0; /* Add spacing between items */
+    margin: 5px 0; /* Reduced margin between items */
 }
 
 .footer-link {
@@ -37,7 +44,7 @@
 }
 
 #newsletterForm {
-    margin-top: 20px; /* Space above form */
+    margin: 20px 0; /* Space above and below the form */
 }
 
 .footer-label {

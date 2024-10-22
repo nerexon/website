@@ -1,45 +1,110 @@
-
-.aButton {
-    display: inline-block;
-    padding: 15px 30px;
-    background-color: #1058a5;
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 125%
-  }
-  
-  .aButton:hover {
-    background-color: #053c77d5;
-   
-  }
-
-  header {
-    background-color: rgb(58, 199, 180);
-    background-image: radial-gradient(#3ac7b4, #21795d );
-    padding-bottom : 1%;
-  }
-
-  h1 {
-    padding-top : 2%;
-    text-align: center;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    color: conic-gradient(#553c9a 0%, #553c9a 33%, #ee4b2b 33%, #ee4b2b 66%, #00c2cb 66%, #00c2cb 99%);
-  }
-
-#productSection {
-    background-color: rgb(219, 217, 217);
-    margin-top: 0%;
-   
+/* General Section Styles */
+section {
+  padding: 40px;
+  background-color: #f0f4f8; /* Light background color */
+  margin-bottom: 40px;
 }
-#products {
-        display: flex;
-      }
 
 h2 {
-  margin-top: 0%;
+  margin-top: 0;
   padding-top: 1%;
-  font-size: 200%;
-  
+  font-size: 2.5rem;
+  color: #2c3e50; /* Darker shade for headings */
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Product Section Styles */
+#productSection {
+  background-color: #ffffff; /* White background for contrast */
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+}
+
+#products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+#products div {
+  background-color: #dfe6e9; /* Soft gray for product cards */
+  border-radius: 8px;
+  padding: 20px;
+  width: 30%;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+#products h3 {
+  font-size: 1.8rem;
+  color: #2980b9; /* Bright blue for product titles */
+}
+
+#products p {
+  color: #34495e; /* Darker gray for product text */
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin: 10px 0 20px;
+}
+
+#products a {
+  color: #2980b9; /* Bright blue for links */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+#products a:hover {
+  text-decoration: underline;
+}
+
+/* About Section Styles */
+#abouts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+#abouts div {
+  background-color: #ffffff; /* White background for about cards */
+  border-radius: 8px;
+  padding: 20px;
+  width: 48%;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+#abouts h3 {
+  font-size: 1.8rem;
+  color: #2980b9; /* Bright blue for about section titles */
+}
+
+#abouts p {
+  color: #34495e; /* Darker gray for about text */
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 10px;
+}
+
+#abouts a {
+  color: #2980b9; /* Bright blue for links */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+#abouts a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  #products div,
+  #abouts div {
+      width: 100%;
+  }
+
+  h2 {
+      font-size: 2rem;
+  }
 }
