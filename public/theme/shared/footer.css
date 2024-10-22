@@ -89,21 +89,24 @@
 }
 
 /* Responsive Design */
-@media (max-width: 600px) {
+@media (max-width: 1024px) {
     #footer {
         padding: 30px 10px; /* Adjust padding for small screens */
     }
 
+    .footer-heading {
+        font-size: 2em; /* Increase heading size on small screens */
+    }
+
     .footer-input {
-        width: 100%; /* Full-width input on small screens */
         margin: 10px 0; /* Margin adjustments */
+        font-size: 2em; /* Increase font size inside input */
+        padding: 15px; /* Increase padding for better touch targets */
+        width: 310px; /* Adjusted width for a slightly larger input */
     }
 
     .footer-button {
-        width: 100%; /* Full-width button on small screens */
-    }
-
-    .footer-heading {
-        font-size: 1.5em; /* Smaller headings on small screens */
+        font-size: 2em; /* Increase button text size */
+        padding: 15px 20px; /* Increase button padding */
     }
 }

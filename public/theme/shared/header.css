@@ -1,36 +1,74 @@
+/* General Navigation Styles */
 nav { 
-    text-align: center;
+  text-align: center;
 }
 
+/* Button Styles */
 .aButton {
-    display: inline-block;
-    padding: 15px 30px;
-    background-color: #1058a5;
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 125%;
-  }
-  
-  .aButton:hover {
-    background-color: #053c77d5;
-   
-  }
+  display: inline-block;
+  padding: 25px 50px; /* Increased default padding for larger buttons */
+  background-color: #1058a5;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 160%; /* Increased default font size for better visibility */
+}
 
-  header {
-    background-color: rgb(58, 199, 180);
-    background-image: radial-gradient(#3ac7b4, #21795d );
-    padding-bottom : 1%;
-    margin-bottom: 0;
-    user-select: none;
-  }
+.aButton:hover {
+  background-color: #053c77d5;
+}
 
+/* Header Styles */
+header {
+  background-color: rgb(58, 199, 180);
+  background-image: radial-gradient(#3ac7b4, #21795d);
+  padding-bottom: 1%;
+  margin-bottom: 0;
+  user-select: none;
+}
+
+/* Main Heading Styles */
+h1 {
+  margin-top: 0;
+  padding-top: 2%;
+  font-size: 400%; /* Large font size for desktop */
+  text-align: center;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  color: conic-gradient(#553c9a 0%, #553c9a 33%, #ee4b2b 33%, #ee4b2b 66%, #00c2cb 66%, #00c2cb 99%);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1024px) {
   h1 {
-    margin-top: 0;
-    padding-top : 2%;
-    font-size: 400%;
-    text-align: center;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    color: conic-gradient(#553c9a 0%, #553c9a 33%, #ee4b2b 33%, #ee4b2b 66%, #00c2cb 66%, #00c2cb 99%);
+      font-size: 400%; /* Keep heading size large on medium screens */
   }
+
+  .aButton {
+      padding: 25px 50px; /* Maintain larger button padding */
+      font-size: 160%; /* Keep button font size larger */
+  }
+}
+
+@media screen and (max-width: 768px) {
+  h1 {
+      font-size: 350%; /* Keep heading prominent on smaller screens */
+  }
+
+  .aButton {
+      padding: 22px 45px; /* Adjust button padding for smaller screens */
+      font-size: 170%; /* Increase button font size for better visibility */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  h1 {
+      font-size: 300%; /* Maintain heading size for very small screens */
+      padding-top: 5%; /* Adjust padding for better spacing */
+  }
+
+  .aButton {
+      padding: 20px 40px; /* Keep button padding large for touch targets */
+      font-size: 180%; /* Further increase button font size for better visibility */
+  }
+}
