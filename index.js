@@ -26,8 +26,14 @@ const mimeTypes = {
 };
 
 const server = http.createServer((req, res) => {
+    const ip = req.socket.remoteAddress; // Get the client's IP address
+    const now = new Date();
+    const time = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`; // Format HH:mm:ss
     let filePath = path.join(publicDir, req.url === '/' ? 'index.html' : req.url);
     
+    // Log the request with time and IP
+    console.log(`[${time}] [${ip}] - ${req.url}`);
+
     // If the request is for a directory, serve index.html from that directory
     fs.stat(filePath, (err, stats) => {
         if (!err && stats.isDirectory()) {
