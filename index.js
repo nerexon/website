@@ -26,43 +26,75 @@ const mimeTypes = {
 };
 
 const server = http.createServer((req, res) => {
-    const ip = req.socket.remoteAddress; // Get the client's IP address
+    const ip = req.socket.remoteAddress;
     const now = new Date();
     const time = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`; // Format HH:mm:ss
     let filePath = path.join(publicDir, req.url === '/' ? 'index.html' : req.url);
-    
-    // Log the request with time and IP
+
     console.log(`[${time}] [${ip}] - ${req.url}`);
 
-    // If the request is for a directory, serve index.html from that directory
     fs.stat(filePath, (err, stats) => {
-        if (!err && stats.isDirectory()) {
-            filePath = path.join(filePath, 'index.html');
+        if (err) {
+            if (err.code === 'ENOENT') {
+                return send404(res);
+            }
+            return send500(res, err);
         }
 
-        // Get the file extension
+        if (stats.isDirectory()) {
+            filePath = path.join(filePath, 'index.html');
+            // Serve directory listing if index.html doesn't exist
+            if (!fs.existsSync(filePath)) {
+                return sendDirectoryListing(res, filePath);
+            }
+        }
+
         const extname = path.extname(filePath).toLowerCase();
         const contentType = mimeTypes[extname] || 'text/plain';
 
-        // Stream the file instead of reading it into memory
+        // Set caching headers for static files
+        res.setHeader('Cache-Control', 'public, max-age=86400'); // 1 day
         const stream = fs.createReadStream(filePath);
+
         stream.on('open', () => {
             res.writeHead(200, { 'Content-Type': contentType });
             stream.pipe(res);
         });
 
         stream.on('error', (error) => {
-            if (error.code === 'ENOENT') {
-                // File not found
-                res.writeHead(404, { 'Content-Type': 'text/html' });
-                res.end('<h1>404 Not Found</h1>', 'utf-8');
-            } else {
-                // Some server error
-                res.writeHead(500);
-                res.end(`Server Error: ${error.code}`);
-                console.error(`Error serving file: ${error.message}`);
-            }
+            send500(res, error);
         });
+    });
+});
+
+function send404(res) {
+    res.writeHead(404, { 'Content-Type': 'text/html' });
+    res.end('<h1>404 Not Found</h1>', 'utf-8');
+}
+
+function send500(res, error) {
+    console.error(`Server Error: ${error.message}`);
+    res.writeHead(500, { 'Content-Type': 'text/html' });
+    res.end('<h1>500 Server Error</h1>', 'utf-8');
+}
+
+function sendDirectoryListing(res, dirPath) {
+    fs.readdir(dirPath, (err, files) => {
+        if (err) {
+            return send500(res, err);
+        }
+        const fileList = files.map(file => `<li><a href="${file}">${file}</a></li>`).join('');
+        res.writeHead(200, { 'Content-Type': 'text/html' });
+        res.end(`<h1>Directory Listing</h1><ul>${fileList}</ul>`, 'utf-8');
+    });
+}
+
+// Graceful shutdown
+process.on('SIGINT', () => {
+    console.log('Shutting down server...');
+    server.close(() => {
+        console.log('Server shut down gracefully.');
+        process.exit(0);
     });
 });
 
