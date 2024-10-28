@@ -72,10 +72,8 @@ function handleRequest(req, res) {
         }
 
         if (stats.isDirectory()) {
-            filePath = path.join(filePath, 'index.html');
-            if (!fs.existsSync(filePath)) {
-                return sendDirectoryListing(res, filePath);
-            }
+            // Serve directory listing if it's a directory
+            return sendDirectoryListing(res, filePath);
         }
 
         const extname = path.extname(filePath).toLowerCase();
@@ -120,11 +118,18 @@ function sendDirectoryListing(res, dirPath) {
         if (err) {
             return send500(res, err);
         }
-        const fileList = files.map(file => `<li><a href="${file}">${file}</a></li>`).join('');
+        
+        const relativePath = path.relative(publicDir, dirPath); // Get relative path from publicDir
+        const fileList = files.map(file => {
+            const fullPath = path.join(relativePath, file);
+            return `<li><a href="${fullPath}">${file}</a></li>`;
+        }).join('');
+
         res.writeHead(200, { 'Content-Type': 'text/html' });
         res.end(`<h1>Directory Listing</h1><ul>${fileList}</ul>`, 'utf-8');
     });
 }
+
 
 function formatTime(date) {
     return `${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}:${String(date.getSeconds()).padStart(2, '0')}`; // Format HH:mm:ss
