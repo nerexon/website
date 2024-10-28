@@ -1,0 +1,144 @@
+
+section {
+  padding: 40px;
+  background-color: #f0f4f8; /* Light background color */
+  margin-bottom: 40px;
+}
+
+h2 {
+  margin-top: 0;
+  padding-top: 1%;
+  font-size: 2.5rem;
+  color: #2c3e50; /* Darker shade for headings */
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Product Section Styles */
+#productSection {
+  background-color: #ffffff; /* White background for contrast */
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+}
+
+#products {
+  display: flex;
+  flex-direction: row; /* Ensure items are in a row initially */
+  flex-wrap: wrap;
+  justify-content: space-between; /* Align items with space between */
+}
+
+#products div {
+  background-color: #dfe6e9; /* Soft gray for product cards */
+  border-radius: 8px;
+  padding: 20px;
+  width: 30%; /* Default width for larger screens */
+  margin-bottom: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+#products h3 {
+  font-size: 1.8rem; /* Same size as about section */
+  color: #2980b9; /* Bright blue for product titles */
+}
+
+#products p {
+  color: #34495e; /* Darker gray for product text */
+  font-size: 1.1rem; /* Same size as about section */
+  line-height: 1.6;
+  margin: 10px 0 20px;
+}
+
+#products a {
+  color: #2980b9; /* Bright blue for links */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+#products a:hover {
+  text-decoration: underline;
+}
+
+/* About Section Styles */
+#abouts {
+  display: flex;
+  flex-direction: row; /* Ensure items are in a row initially */
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+#abouts div {
+  background-color: #ffffff; /* White background for about cards */
+  border-radius: 8px;
+  padding: 20px;
+  width: 48%; /* Default width for about cards */
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+#abouts h3 {
+  font-size: 1.8rem; /* Same size as product titles */
+  color: #2980b9; /* Bright blue for about section titles */
+}
+
+#abouts p {
+  color: #34495e; /* Darker gray for about text */
+  font-size: 1.1rem; /* Same size as product paragraphs */
+  line-height: 1.7;
+  margin-bottom: 10px;
+}
+
+#abouts a {
+  color: #2980b9; /* Bright blue for links */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+#abouts a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1024px) {
+  #products div {
+    width: 45%; /* Adjust width for medium screens */
+  }
+
+  #abouts div {
+    width: 100%; /* Full width for about cards */
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  #products div {
+    width: 100%; /* Full width for product cards, stacking vertically */
+    margin-bottom: 20px; /* Ensure space between stacked cards */
+  }
+
+  h2 {
+    font-size: 2rem; /* Smaller heading for mobile */
+  }
+
+  #products h3 {
+    font-size: 1.8rem; /* Keep product title size consistent with about section */
+  }
+
+  #products p {
+    font-size: 1.1rem; /* Keep paragraph size consistent with about section */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  h2 {
+    font-size: 1.8rem; /* Further reduce heading size for small screens */
+  }
+
+  #products h3 {
+    font-size: 1.8rem; /* Keep product title size consistent */
+  }
+
+  #products p {
+    font-size: 1.1rem; /* Keep paragraph size consistent */
+  }
+}
