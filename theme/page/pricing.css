@@ -1,0 +1,180 @@
+/* Main container */
+.main-container {
+    display: flex;
+    min-height: calc(100vh - 60px);
+    margin-top: 60px;
+    background: var(--background-gradient);
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Side panel */
+.side-panel {
+    width: 300px;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+    backdrop-filter: blur(4px);
+    overflow-y: auto;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.side-panel:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 40px rgba(31, 38, 135, 0.2);
+}
+
+/* Panel Header */
+.panel-header {
+    padding: 20px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-radius: 15px 15px 0 0;
+    position: sticky;
+    top: 0;
+    z-index: 1001;
+}
+
+.panel-header h2 {
+    margin: 0;
+    font-size: 1.4em;
+    color: white;
+    text-align: center;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* Product list styling */
+.side-panel ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.side-panel > ul {
+    padding: 20px;
+}
+
+.side-panel ul ul {
+    padding-left: 20px;
+    margin-top: 8px;
+}
+
+.side-panel > ul > li {
+    font-weight: 600;
+    color: var(--text-color);
+    padding: 15px 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.side-panel > ul > li:hover {
+    background-color: rgba(var(--primary-color-rgb), 0.1);
+    border-radius: 8px;
+}
+
+.side-panel > ul > li > ul > li {
+    font-weight: normal;
+    color: var(--text-secondary);
+    padding: 8px 10px;
+    margin: 4px 0;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.side-panel > ul > li > ul > li:hover {
+    background-color: rgba(var(--primary-color-rgb), 0.05);
+    color: var(--primary-color);
+    padding-left: 15px;
+    cursor: pointer;
+}
+
+/* Main content area */
+.main-content {
+    flex: 1;
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+    backdrop-filter: blur(4px);
+    overflow-y: auto;
+    transition: all 0.3s ease;
+}
+
+.main-content h2 {
+    color: var(--text-color);
+    font-size: 2em;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.main-content p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* Calculator specific styles */
+.calculator-container {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .main-container {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .side-panel {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .main-content {
+        padding: 20px;
+    }
+}
+
+/* Scrollbar styling */
+.side-panel::-webkit-scrollbar,
+.main-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.side-panel::-webkit-scrollbar-track,
+.main-content::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+}
+
+.side-panel::-webkit-scrollbar-thumb,
+.main-content::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 4px;
+}
+
+/* Additional modern touches */
+@media (prefers-reduced-motion: no-preference) {
+    .side-panel > ul > li > ul > li {
+        transform-origin: left;
+    }
+    
+    .side-panel > ul > li > ul > li:hover {
+        transform: scale(1.02);
+    }
+}
+
+/* CSS Variables (add these to your :root) */
+:root {
+    --primary-color: #4a90e2;
+    --primary-color-rgb: 74, 144, 226;
+    --secondary-color: #34495e;
+    --text-color: #2c3e50;
+    --text-secondary: #666666;
+    --background-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
