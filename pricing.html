@@ -28,6 +28,11 @@
     
             <!--Page content-->
             <div class="main-container">
+                <button id="focusToggle" class="focus-toggle-button" aria-label="Toggle focus mode">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+                    </svg>
+                </button>
                 <!-- Side Panel for Products -->
                 <section id="productList" class="side-panel">
                     <div class="panel-header">
@@ -37,7 +42,7 @@
                         <li>
                             Cloud Computing
                             <ul>
-                                <li>Virtual Machines</li>
+                                <li id="virtual-machines">Virtual Machines</li>
                                 <li>Storage Solutions</li>
                                 <li>Database Services</li>
                                 <li>Containerization</li>
@@ -109,5 +114,26 @@
                     <p>Join our community and stay updated with the latest news and offers!</p>
                 </section>
             </footer>
+            <script>
+                document.getElementById('focusToggle').addEventListener('click', function() {
+                    const header = document.querySelector('header');
+                    const footer = document.querySelector('footer');
+                    const mainContainer = document.querySelector('.main-container');
+                    
+                    // Toggle classes
+                    header.classList.toggle('hidden');
+                    footer.classList.toggle('hidden');
+                    mainContainer.classList.toggle('focus-mode');
+                    this.classList.toggle('active');
+                    
+                    // Update aria-label for accessibility
+                    this.setAttribute('aria-label', 
+                        this.classList.contains('active') 
+                            ? 'Exit focus mode' 
+                            : 'Enter focus mode'
+                    );
+                });
+            </script>
+            <script src="/js/pricing-calculator.js"></script>
         </body>
     </html>
