@@ -1,269 +1,201 @@
-/**
- * Advanced Pricing Calculator Framework
- * 
- * PRICING MODEL DOCUMENTATION:
- * 
- * 1. Basic Price Types:
- *    - Fixed: Single flat rate
- *    - Per Unit: Price multiplied by quantity
- *    - Tiered: Different rates for different quantity ranges
- *    - Volume: Entire quantity charged at rate based on total volume
- *    - Graduated: Different rates for portions within each tier
- *    - Time-based: Rates vary based on time periods
- *    - Usage-based: Rates based on actual usage metrics
- * 
- * 2. Pricing Modifiers:
- *    - Multipliers: Modify base price by a factor
- *    - Addons: Additional fixed or variable costs
- *    - Discounts: Percentage or fixed amount reductions
- *    - Time-sensitive: Special rates for different periods
- *    - Bundle discounts: Reduced rates when combining products
- *    - Commitment discounts: Reduced rates for longer commitments
- * 
- * 3. Configuration Example:
- * {
- *   id: "product-1",
- *   name: "Example Product",
- *   priceModel: {
- *     type: "tiered-graduated",
- *     currency: "USD",
- *     tiers: [
- *       { min: 0, max: 1000, rate: 10, type: "per-unit" },
- *       { min: 1001, max: 10000, rate: 8, type: "volume" }
- *     ],
- *     modifiers: [
- *       { type: "commitment", duration: "yearly", discount: 0.2 },
- *       { type: "volume", threshold: 5000, discount: 0.15 }
- *     ],
- *     addons: [
- *       { id: "support", type: "tiered", tiers: [...] },
- *       { id: "feature-x", type: "fixed", price: 50 }
- *     ]
- *   }
- * }
- */
-
 class PricingCalculator {
     constructor() {
         this.pricingModels = new Map();
-        this.customModifiers = new Map();
-        this.calculationStrategies = new Map();
-        this.activeConfigurations = new Map();
     }
 
-    /**
-     * Registers a new pricing calculation strategy
-     * @param {string} strategyName - Name of the pricing strategy
-     * @param {Function} calculationFunction - The calculation implementation
-     */
-    registerCalculationStrategy(strategyName, calculationFunction) {
-        this.calculationStrategies.set(strategyName, calculationFunction);
+    definePricingModel(model) {
+        this.pricingModels.set(model.id, model);
     }
 
-    /**
-     * Registers a custom pricing modifier
-     * @param {string} modifierName - Name of the modifier
-     * @param {Function} modifierFunction - The modifier implementation
-     */
-    registerPricingModifier(modifierName, modifierFunction) {
-        this.customModifiers.set(modifierName, modifierFunction);
-    }
-
-    /**
-     * Defines a new pricing model
-     * @param {Object} config - Pricing model configuration
-     */
-    definePricingModel(config) {
-        this.validatePricingConfig(config);
-        this.pricingModels.set(config.id, config);
-    }
-
-    /**
-     * Sets active configuration for a product
-     * @param {string} productId - Product identifier
-     * @param {Object} configuration - Configuration options
-     */
-    setConfiguration(productId, configuration) {
-        this.activeConfigurations.set(productId, configuration);
-    }
-
-    /**
-     * Calculates price based on current configuration
-     * @param {string} productId - Product identifier
-     * @param {Object} parameters - Calculation parameters
-     * @returns {PricingResult} Detailed pricing calculation result
-     */
-    calculatePrice(productId, parameters) {
+    calculatePrice(productId, config) {
         const model = this.pricingModels.get(productId);
-        const config = this.activeConfigurations.get(productId);
-        
-        if (!model || !config) {
-            throw new Error('Invalid product or missing configuration');
-        }
+        if (!model) throw new Error(`No pricing model found for product ${productId}`);
 
-        return this.executeCalculation(model, config, parameters);
-    }
-
-    /**
-     * Executes the price calculation
-     * @private
-     */
-    executeCalculation(model, config, parameters) {
-        const result = new PricingResult();
-        const strategy = this.calculationStrategies.get(model.priceModel.type);
-
-        if (!strategy) {
-            throw new Error(`Unknown pricing strategy: ${model.priceModel.type}`);
-        }
-
-        // Execute base calculation
-        result.basePrice = strategy(model, config, parameters);
+        let basePrice = this.calculateBasePrice(model, config);
+        let totalPrice = basePrice;
+        let discounts = [];
 
         // Apply modifiers
-        this.applyModifiers(result, model, config, parameters);
+        if (model.priceModel.modifiers) {
+            model.priceModel.modifiers.forEach(modifier => {
+                const { type, ...params } = modifier;
+                const modifierResult = this.applyModifier(type, params, totalPrice, config);
+                if (modifierResult.discount > 0) {
+                    discounts.push({
+                        type: type,
+                        amount: modifierResult.discount
+                    });
+                    totalPrice -= modifierResult.discount;
+                }
+            });
+        }
 
-        // Calculate addons
-        this.calculateAddons(result, model, config, parameters);
-
-        return result;
+        return {
+            basePrice: basePrice,
+            discounts: discounts,
+            totalPrice: totalPrice
+        };
     }
 
-    /**
-     * Applies pricing modifiers
-     * @private
-     */
-    applyModifiers(result, model, config, parameters) {
-        model.priceModel.modifiers?.forEach(modifier => {
-            const modifierFunc = this.customModifiers.get(modifier.type);
-            if (modifierFunc) {
-                modifierFunc(result, modifier, config, parameters);
+    calculateBasePrice(model, config) {
+        const { type, tiers, basePrice } = model.priceModel;
+        const { quantity } = config;
+
+        switch (type) {
+            case 'fixed':
+                return basePrice;
+            case 'perUnit':
+                return basePrice * quantity;
+            case 'tiered':
+            case 'graduated':
+                let total = 0;
+                let remainingUnits = quantity;
+                for (const tier of tiers) {
+                    if (remainingUnits <= 0) break;
+                    const tierUnits = Math.min(remainingUnits, tier.max - tier.min + 1);
+                    total += tierUnits * tier.rate;
+                    remainingUnits -= tierUnits;
+                }
+                return total;
+            default:
+                throw new Error(`Unsupported pricing model type: ${type}`);
+        }
+    }
+
+    applyModifier(type, params, currentPrice, config) {
+        switch (type) {
+            case 'commitmentDiscount':
+                const { discounts } = params;
+                const { commitment } = config;
+                const discount = discounts[commitment] || 0;
+                return {
+                    discount: currentPrice * discount
+                };
+            case 'volumeDiscount':
+                const { threshold, discount: volumeDiscount } = params;
+                const { quantity } = config;
+                if (quantity >= threshold) {
+                    return {
+                        discount: currentPrice * volumeDiscount
+                    };
+                }
+                return { discount: 0 };
+            default:
+                return { discount: 0 };
+        }
+    }
+}
+
+// Initialize the calculator
+const calculator = new PricingCalculator();
+
+// Define sample pricing model
+const samplePricingModel = {
+    id: 'virtual-machines',
+    name: 'Virtual Machines',
+    priceModel: {
+        type: 'graduated',
+        currency: 'USD',
+        basePrice: 10,
+        tiers: [
+            { min: 0, max: 100, rate: 1.00 },
+            { min: 101, max: 1000, rate: 0.75 },
+            { min: 1001, max: Infinity, rate: 0.50 }
+        ],
+        modifiers: [
+            {
+                type: 'commitmentDiscount',
+                discounts: {
+                    monthly: 0,
+                    yearly: 0.20
+                }
+            },
+            {
+                type: 'volumeDiscount',
+                threshold: 5000,
+                discount: 0.15
+            }
+        ]
+    }
+};
+
+calculator.definePricingModel(samplePricingModel);
+
+// Function to display the calculator
+function displayCalculator(productId, container) {
+    const model = calculator.pricingModels.get(productId);
+    
+    container.innerHTML = `
+        <h2>${model.name} Calculator</h2>
+        <div class="product-input-group">
+            <h3>Configuration</h3>
+            <div class="input-field">
+                <label for="quantity">Quantity</label>
+                <input type="number" id="quantity" min="1" value="1">
+            </div>
+            <div class="input-field">
+                <label for="commitment">Commitment Period</label>
+                <select id="commitment">
+                    <option value="monthly">Monthly</option>
+                    <option value="yearly">Yearly</option>
+                </select>
+            </div>
+        </div>
+        <div id="calculationSummary">
+            <h3>Summary</h3>
+            <div class="summary-item">
+                <span>Base Price</span>
+                <span id="basePrice">$0.00</span>
+            </div>
+            <div class="summary-item">
+                <span>Discounts</span>
+                <span id="discounts">$0.00</span>
+            </div>
+            <div id="totalPrice">Total: $0.00</div>
+        </div>
+    `;
+
+    // Add event listeners for real-time calculation
+    const inputs = container.querySelectorAll('.input-field input, .input-field select');
+    inputs.forEach(input => {
+        input.addEventListener('input', () => updateCalculation(productId, container));
+    });
+
+    // Initial calculation
+    updateCalculation(productId, container);
+}
+
+// Function to update the calculation
+function updateCalculation(productId, container) {
+    const quantity = parseInt(document.getElementById('quantity').value);
+    const commitment = document.getElementById('commitment').value;
+    const config = { quantity, commitment };
+    const result = calculator.calculatePrice(productId, config);
+    displayResult(result, container);
+}
+
+// Function to display the result
+function displayResult(result, container) {
+    const basePriceElement = container.querySelector('#basePrice');
+    const discountsElement = container.querySelector('#discounts');
+    const totalPriceElement = container.querySelector('#totalPrice');
+    
+    basePriceElement.textContent = `$${result.basePrice.toFixed(2)}`;
+    const totalDiscounts = result.discounts.reduce((sum, discount) => sum + discount.amount, 0);
+    discountsElement.textContent = `$${totalDiscounts.toFixed(2)}`;
+    totalPriceElement.textContent = `Total: $${result.totalPrice.toFixed(2)}`;
+}
+
+// Add event listener for product selection
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.side-panel ul ul li').forEach(item => {
+        item.addEventListener('click', function() {
+            const productId = this.id;
+            const productCalculator = document.getElementById('productCalculator');
+            
+            if (calculator.pricingModels.has(productId)) {
+                displayCalculator(productId, productCalculator);
             }
         });
-    }
-}
-
-class PricingResult {
-    constructor() {
-        this.basePrice = 0;
-        this.modifiers = [];
-        this.addons = [];
-        this.discounts = [];
-        this.finalPrice = 0;
-        this.breakdown = {};
-        this.metadata = {};
-    }
-
-    addModifier(modifier) {
-        this.modifiers.push(modifier);
-    }
-
-    addDiscount(discount) {
-        this.discounts.push(discount);
-    }
-
-    calculateFinal() {
-        // Calculate final price considering all modifiers and discounts
-        this.finalPrice = this.basePrice;
-        
-        // Apply modifiers
-        this.modifiers.forEach(modifier => {
-            this.finalPrice = modifier.apply(this.finalPrice);
-        });
-
-        // Apply discounts
-        this.discounts.forEach(discount => {
-            this.finalPrice = discount.apply(this.finalPrice);
-        });
-
-        return this.finalPrice;
-    }
-}
-
-/**
- * Example calculation strategy implementations
- */
-const calculationStrategies = {
-    fixed: (base) => base,
-    
-    perUnit: (price, quantity) => price * quantity,
-    
-    tiered: (tiers, quantity) => {
-        // Implementation for tiered pricing
-    },
-    
-    graduated: (tiers, quantity) => {
-        // Implementation for graduated pricing
-    },
-    
-    volume: (brackets, quantity) => {
-        // Implementation for volume pricing
-    },
-    
-    timeBased: (rates, duration) => {
-        // Implementation for time-based pricing
-    },
-    
-    usageBased: (metrics, usage) => {
-        // Implementation for usage-based pricing
-    }
-};
-
-/**
- * Example modifier implementations
- */
-const modifierImplementations = {
-    commitmentDiscount: (price, commitment) => {
-        // Implementation for commitment-based discounts
-    },
-    
-    volumeDiscount: (price, volume) => {
-        // Implementation for volume-based discounts
-    },
-    
-    seasonalModifier: (price, season) => {
-        // Implementation for seasonal price modifications
-    },
-    
-    bundleDiscount: (price, bundle) => {
-        // Implementation for bundle discounts
-    }
-};
-
-/**
- * Usage Example:
- * 
- * const calculator = new PricingCalculator();
- * 
- * // Register calculation strategies
- * calculator.registerCalculationStrategy('tiered', calculationStrategies.tiered);
- * 
- * // Register custom modifiers
- * calculator.registerPricingModifier('commitment', modifierImplementations.commitmentDiscount);
- * 
- * // Define pricing model
- * calculator.definePricingModel({
- *   id: 'product-1',
- *   name: 'Example Product',
- *   priceModel: {
- *      type: 'tiered',
- *      currency: 'USD',
- *      tiers: [...],
- *      modifiers: [...],
- *      addons: [...]
- *   }
- * });
- * 
- * // Set active configuration
- * calculator.setConfiguration('product-1', {
- *   quantity: 1000,
- *   commitment: 'yearly'
- * });
- * 
- * // Calculate price
- * const result = calculator.calculatePrice('product-1', {
- *   quantity: 1000,
- *   commitment: 'yearly'
- * });
- * 
- * console.log(result.finalPrice);
- */
+    });
+});
