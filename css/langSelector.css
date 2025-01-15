@@ -26,7 +26,6 @@ ul {
 li {
     display: inline-block;
     margin: 1em;
-    padding: 1.5em 0;
     width: 14em;
     background-color: var(--button-background-color);
     border-radius: 1em;
@@ -36,6 +35,7 @@ li {
 a {
     display: block;
     margin: 0 auto;
+    padding: 0.8em 0;
     text-align: center;
     font-size: 2em;
     text-decoration: none;
