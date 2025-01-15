@@ -5,6 +5,7 @@
 
 body {
     background-color: var(--document-background-color);
+    user-select: none;
 }
 
 
