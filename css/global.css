@@ -2,6 +2,7 @@
     --header-background-color: #1e4a39;
     --document-background-color: #1e2f4a;
     --button-background-color: #166838;
+    --button-hover-background-color: rgba(22, 104, 56, 0.4);
     --footer-background-color: #17362a;
 }
 
@@ -52,6 +53,11 @@ header > nav > ul > li > a {
     border-radius: 0.5em;
     background-color: var(--button-background-color);
     -webkit-user-drag: none;
+}
+
+header > nav > ul > li > a:hover {
+    background-color: var(--button-hover-background-color);
+    text-decoration: underline;
 }
 
 /**********/
