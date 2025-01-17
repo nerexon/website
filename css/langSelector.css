@@ -12,12 +12,21 @@ body {
 /*************/
 /*  Buttons  */
 /*************/
-
-ul {
+main {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+img {
+    display: block;
+    margin: auto;
+    transform: scale(1.5);
+    -webkit-user-drag: none;
+}
+
+ul {
     margin: 0;
     padding: 0;
 }
@@ -25,7 +34,7 @@ ul {
 li {
     display: inline-block;
     margin: 1em;
-    width: 14em;
+    width: 13em;
     background-color: var(--button-background-color);
     border-radius: 1em;
     list-style: none;
