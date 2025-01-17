@@ -1,7 +1,7 @@
 :root {
-    --header-background-color: #07af6d;
+    --header-background-color: #1e4a39;
     --document-background-color: #1e2f4a;
-    --button-background-color: #62e774;
+    --button-background-color: #166838;
 }
 
 body {
@@ -16,17 +16,49 @@ body {
 
 header {
     margin: 1em;
-    padding: 1em;
+    padding: 1em 1em 0 1em;
     border-radius: 1em;
     background-color: var(--header-background-color);
 }
 
 header h1 {
     margin: 0;
+    font-size: 2.5em;
 }
 
+header > nav {
+    display: flex;
+    flex-direction: row;
+    padding: 0.8em 0;
+    justify-content: space-between;
+    user-select: none;
+}
+
+header > nav > ul{
+    padding: 0;
+}
+
+header > nav > ul > li {
+    display: inline-block;
+    margin: 0 0.4em;
+}
+
+header > nav > ul > li > a {
+    padding: 0.8em 1em;
+    color: #fff;
+    font-size: 1.2em;
+    text-decoration: none;
+    border-radius: 0.5em;
+    background-color: var(--button-background-color);
+    -webkit-user-drag: none;
+}
 
 /**********/
 /*  Page  */
 /**********/
 
+main > section {
+    margin: 1em;
+    padding: 1em;
+    border-radius: 1em;
+}
