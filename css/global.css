@@ -2,6 +2,7 @@
     --header-background-color: #1e4a39;
     --document-background-color: #1e2f4a;
     --button-background-color: #166838;
+    --footer-background-color: #17362a;
 }
 
 body {
@@ -60,5 +61,22 @@ header > nav > ul > li > a {
 main > section {
     margin: 1em;
     padding: 1em;
+}
+
+
+/************/
+/*  Footer  */
+/************/
+
+footer {
+    margin: 1em;
+    padding: 0.5em 1em;
+    background-color: var(--footer-background-color);
     border-radius: 1em;
+    user-select: none;
+}
+
+footer p {
+    text-align: center;
+    color: #ccc;
 }
