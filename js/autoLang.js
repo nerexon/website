@@ -12,13 +12,23 @@ function execute(){
 
         const port = window.location.port;
         const protocol = window.location.protocol;
-        console.log(protocol)
 
         splittedPath[0] = window.location.hostname + (port ? ":" + port : "");
         splittedPath[2] = language;
+        
         const fullPath = protocol + "//" + splittedPath.join("/");
         window.location.href = fullPath;
         
+    } else {
+        const port = window.location.port;
+        const protocol = window.location.protocol;
+
+        splittedPath[0] = window.location.hostname + (port ? ":" + port : "");
+        splittedPath[1] = "page";
+        splittedPath[2] = language;
+
+        const fullPath = protocol + "//" + splittedPath.join("/") + "/home.html";
+        window.location.href = fullPath;
     }
 }
 
