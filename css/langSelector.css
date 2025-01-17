@@ -13,22 +13,20 @@ body {
 /*  Buttons  */
 /*************/
 main {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    
 }
 
 img {
-    display: block;
-    margin: auto;
-    transform: scale(1.5);
     -webkit-user-drag: none;
 }
 
 ul {
+    position: absolute;
+    top: 50%;
+    left: 50%;
     margin: 0;
     padding: 0;
+    transform: translate(-50%, -50%);
 }
 
 li {
@@ -42,7 +40,6 @@ li {
 
 a {
     display: block;
-    margin: 0 auto;
     padding: 0.8em 0;
     text-align: center;
     font-size: 2em;
