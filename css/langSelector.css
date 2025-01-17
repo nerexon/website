@@ -1,6 +1,7 @@
 :root {
     --button-background-color: #62e774;
     --document-background-color: #1e2f4a;
+    --selected-button-background-color: rgba(98, 231, 116, 0.5);
 }
 
 body {
@@ -30,8 +31,6 @@ li {
     display: inline-block;
     margin: 1em;
     width: 13em;
-    background-color: var(--button-background-color);
-    border-radius: 1em;
     list-style: none;
 }
 
@@ -42,7 +41,14 @@ a {
     font-size: 2em;
     text-decoration: none;
     text-transform: uppercase;
+    border-radius: 0.6em;
+    background-color: var(--button-background-color);
     color: var(--document-background-color);
+}
+
+a:hover {
+    text-decoration: underline var(--document-background-color);
+    background-color: var(--selected-button-background-color);
 }
 
 /* How to center verticaly : https://www.w3schools.com/howto/howto_css_center-vertical.asp */
