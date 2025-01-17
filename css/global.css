@@ -1,1 +1,32 @@
- 
+:root {
+    --header-background-color: #07af6d;
+    --document-background-color: #1e1a38;
+    --button-background-color: #62e774;
+}
+
+body {
+    background-color: var(--document-background-color);
+    font-size: 1rem;
+}
+
+
+/************/
+/*  Header  */
+/************/
+
+header {
+    margin: 1em;
+    padding: 1em;
+    border-radius: 1em;
+    background-color: var(--header-background-color);
+}
+
+header h1 {
+    margin: 0;
+}
+
+
+/**********/
+/*  Page  */
+/**********/
+
