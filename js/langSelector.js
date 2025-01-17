@@ -17,5 +17,10 @@ function handleFrench () {
     setLanguage("fr");
 }
 
-englishButton.addEventListener("click", handleEnglish);
-frenchButton.addEventListener("click", handleFrench);
+if(englishButton){
+    englishButton.addEventListener("click", handleEnglish);
+}
+
+if(frenchButton){
+    frenchButton.addEventListener("click", handleFrench);
+}
