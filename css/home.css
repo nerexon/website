@@ -11,6 +11,8 @@ h2 {
 #centered_logo {
     display: block;
     margin: auto;
+    user-select: none;
+    -webkit-user-drag: none;
 }
 
 #projects {
