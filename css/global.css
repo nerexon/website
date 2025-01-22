@@ -72,6 +72,11 @@ main > section {
     background-color: var(--section-background-color);
 }
 
+h2 {
+    font-size: 1.8em;
+    text-align: center;
+}
+
 
 /************/
 /*  Footer  */
