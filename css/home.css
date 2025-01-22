@@ -17,30 +17,30 @@ h2 {
     -webkit-user-drag: none;
 }
 
-#projects {
+.main_container {
     display: flex;
     justify-content: space-around;
 }
 
-.project {
+.container {
     display: inline-block;
     max-width: 25vw;
 }
 
-.project p {
+.container p {
     text-align: justify;
 }
 
-.project ul {
+.container ul {
     margin-top: 2em;
     padding: 0;
 }
 
-.project li {
+.container li {
     list-style: none;
 }
 
-.project a {
+.container a {
     padding: 0.8em 1.2em;
     background-color: var(--darker-button-background-color);
     border-radius: 0.5em;
@@ -48,7 +48,7 @@ h2 {
     text-decoration: none;
 }
 
-.project a:hover {
+.container a:hover {
     background-color: var(--darker-button-hover-background-color);
     text-decoration: underline #fff;
 }
@@ -59,11 +59,11 @@ h2 {
 /************/
 
 @media only screen and (max-width: 600px) {
-    #projects {
+    .main_container {
         flex-direction: column;
     }
 
-    .project {
+    .container {
         max-width: 100%;
     }
   }
