@@ -1,0 +1,44 @@
+:root {
+    --darker-button-background-color: #0b4307;
+    --darker-button-hover-background-color: #083105;
+}
+
+h2 {
+    font-size: 1.8em;
+    text-align: center;
+}
+
+#projects {
+    display: flex;
+    justify-content: space-around;
+}
+.project {
+    display: inline-block;
+    max-width: 25vw;
+}
+
+.project p {
+    text-align: justify;
+}
+
+.project ul {
+    margin-top: 2em;
+    padding: 0;
+}
+
+.project li {
+    list-style: none;
+}
+
+.project a {
+    padding: 0.8em 1.2em;
+    background-color: var(--darker-button-background-color);
+    border-radius: 0.5em;
+    color: #fff;
+    text-decoration: none;
+}
+
+.project a:hover {
+    background-color: var(--darker-button-hover-background-color);
+    text-decoration: underline #fff;
+}
