@@ -1,6 +1,7 @@
 :root {
     --header-background-color: #1e4a39;
     --document-background-color: #1e2f4a;
+    --section-background-color: rgba(37,222,25,80%);
     --button-background-color: #166838;
     --button-hover-background-color: rgba(22, 104, 56, 0.4);
     --footer-background-color: #17362a;
