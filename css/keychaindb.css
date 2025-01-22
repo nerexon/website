@@ -4,7 +4,25 @@
 
 .left-aside aside {
     padding: 1em;
-    width: 20vw;
+    min-width: 170px;
+    width: 15vw;
+}
+
+.left-aside ul {
+    padding-left: 0;
+}
+
+.left-aside li {
+    list-style: none;
+}
+
+.left-aside nav a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.left-aside nav a:hover {
+    text-decoration: underline;
 }
 
 .left-aside section {
