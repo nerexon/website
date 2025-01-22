@@ -89,3 +89,25 @@ footer p {
     text-align: center;
     color: #ccc;
 }
+
+
+/************/
+/*  Mobile  */
+/************/
+
+@media only screen and (max-width: 600px) {
+    body {
+        font-size: 1.1rem;
+    }
+
+    header > nav > ul > li {
+        margin: 0;
+    }
+
+    header > nav > ul > li > a {
+        padding: 0 0.5em;
+        font-size: 1em;
+        border-radius: 0;
+        background-color: var(--header-background-color);
+    }
+  }
