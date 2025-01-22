@@ -8,6 +8,12 @@ h2 {
     text-align: center;
 }
 
+#centered_logo {
+    display: block;
+    margin: auto;
+    width: 50vw;
+}
+
 #projects {
     display: flex;
     justify-content: space-around;
