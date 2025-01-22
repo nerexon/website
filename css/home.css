@@ -21,6 +21,7 @@ h2 {
     display: flex;
     justify-content: space-around;
 }
+
 .project {
     display: inline-block;
     max-width: 25vw;
@@ -51,3 +52,18 @@ h2 {
     background-color: var(--darker-button-hover-background-color);
     text-decoration: underline #fff;
 }
+
+
+/************/
+/*  Mobile  */
+/************/
+
+@media only screen and (max-width: 600px) {
+    #projects {
+        flex-direction: column;
+    }
+
+    .project {
+        max-width: 100%;
+    }
+  }

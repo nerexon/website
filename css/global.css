@@ -110,4 +110,8 @@ footer p {
         border-radius: 0;
         background-color: var(--header-background-color);
     }
+
+    header > nav > ul > li > a:hover {
+        background-color: var(--header-background-color);
+    }
   }
