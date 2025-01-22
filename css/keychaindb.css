@@ -1,3 +1,7 @@
+/************************/
+/*  Informations Aside  */
+/************************/
+
 .left-aside {
     display: flex;
 }
@@ -28,3 +32,8 @@
 .left-aside section {
     padding: 1em;
 }
+
+
+/*******************/
+/*  Documentation  */
+/*******************/
