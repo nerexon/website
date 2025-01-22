@@ -1,0 +1,12 @@
+.left-aside {
+    display: flex;
+}
+
+.left-aside aside {
+    padding: 1em;
+    width: 20vw;
+}
+
+.left-aside section {
+    padding: 1em;
+}
