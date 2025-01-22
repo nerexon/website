@@ -11,6 +11,8 @@ h2 {
 #centered_logo {
     display: block;
     margin: auto;
+    max-width: 100%;
+    height: auto;
     user-select: none;
     -webkit-user-drag: none;
 }
