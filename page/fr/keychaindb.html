@@ -34,7 +34,7 @@
                     <nav>
                         <ul>
                             <li><a href="https://www.npmjs.com/package/keychaindb">Page NPM</a></li>
-                            <li><a href="https://github.com/Alataq/keychaindb">Dépôt GitHub</a></li>
+                            <li><a href="https://github.com/alataq/keychaindb">Dépôt GitHub</a></li>
                         </ul>
                     </nav>
                 </aside>
@@ -74,6 +74,30 @@ const db = new Database();</code></pre>
                 <h3>Supprimer une valeur</h3>
                 <p>Pour supprimer une valeur de votre base de données, vous pouvez utiliser la méthode « delete ». Vous devez spécifier la clée que vous voulez supprimer.<br>Dans l'exemple si dessous, nous supprimmons la valeur de la clée « clef ».</p>
                 <pre><code class="language-javascript">db.delete("Clef");</code></pre>
+            </section>
+            <section>
+                <h3>Trouver des clefs</h3>
+                <p>Pour trouver une valeur dans votre base de données, vous pouvez utiliser la méthode « find ». Vous devez spécifier la méthode de recherche, voici la liste complète.</p>
+                <section>
+                    <h4>Recherche par valeur</h4>
+                    <p>Vous pouvez rechercher directement des clefs en spécifiant la valeur exacte qu'ils doivent avoir. Dans l'exemple si dessous, nous récupérons toutes les clefs ayant la valeur « Valeur »</p>
+                    <pre><code class="language-javascript">db.find("Valeur");</code></pre>
+                </section>
+                <section>
+                    <h4>Recherche par valeur JSON</h4>
+                    <p>La recherche par valeur supporte aussi le recherche dans le json. Dans l'exemple si dessous, nous recherchons toutes les clefs dont le nom est John et l'âge est 30.</p>
+                    <pre><code class="language-javascript">db.find({ name: "John", age: 30 });</code></pre>
+                </section>
+                <section>
+                    <h4>Recherche à l'aide de fonction</h4>
+                    <p>La recherche par fonction est une façon puissante de recherche des clefs. Dans l'exemple si dessous, nous recherchons toutes les clefs dont le nom est John et l'âge est plus grand que 25.</p>
+                    <pre><code class="language-javascript">db.find((value) => value.name === "John" && value.age > 25);</code></pre>
+                </section>
+                <section>
+                    <h4>Recherche par expression régulière (Regex)</h4>
+                    <p>La méthode « find » supporte la recherche par expression régulière. Dans l'exemple suivante, nous recherchons toutes les clefs contenant le mot « Valeur ».</p>
+                    <pre><code class="language-javascript">db.find(/Valeur/);</code></pre>
+                </section>
             </section>
         </section>
     </main>
