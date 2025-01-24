@@ -67,8 +67,13 @@ const db = new Database();</code></pre>
             </section>
             <section>
                 <h3>Reading a value</h3>
-                <p>To read a value, you can use the "get" method. You will need to specify a key. You will then get a value.<br>In the following exemple we are retreiving the value of a saved variable called "Key".</p>
+                <p>To read a value within your database, you can use the "get" method. You will need to specify a key. You will then get a value.<br>In the following exemple we are retreiving the value of a saved variable called "Key".</p>
                 <pre><code class="language-javascript">db.get("Key");</code></pre>
+            </section>
+            <section>
+                <h3>Deleting a value</h3>
+                <p>To delete a valye within your database, you can use the "delete" method. You will need to specify a key.<br>In the following exemple, we are delete the value of a key called "Key".</p>
+                <pre><code class="language-javascript">db.delete("Key");</code></pre>
             </section>
         </section>
     </main>
