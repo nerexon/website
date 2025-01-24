@@ -60,6 +60,11 @@
 
 const db = new Database();</code></pre>
             </section>
+            <section>
+                <h3>Enregistrer une valeur</h3>
+                <p>Pour enregistrer une valeur dans votre base de données, vous pouvez utiliser la méthode « set », vous devez alors spécifier une clée, une valeur et un délais en milliseconde si vous voulez que la valeur expire après un certain temps.<br>Dans l'exemple si dessous, une variable se nommant « Clef » ayant comme valeur « Valeur » expire après 5 secondes.</p>
+                <pre><code class="language-javascript">db.set("Clef", "Valeur", 5000);</code></pre>
+            </section>
         </section>
     </main>
     <footer>

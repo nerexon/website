@@ -60,6 +60,11 @@
 
 const db = new Database();</code></pre>
             </section>
+            <section>
+                <h3>Save a value</h3>
+                <p>To save a value within your database, you need to use the "set" method. You will need to specify a key, a value and a delay in millisecond if you want your value to expire after a given time.<br>In the following exemple, a variable named "Key" has as value "Value" expire after 5 seconds.</p>
+                <pre><code class="language-javascript">db.set("Key", "Value", 5000);</code></pre>
+            </section>
         </section>
     </main>
     <footer>
