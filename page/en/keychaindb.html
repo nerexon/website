@@ -98,6 +98,9 @@ const db = new Database();</code></pre>
                     <p>The "find" method support searching with regular expression too. In the following exemple, we are getting every keys that contain the word "Value".</p>
                     <pre><code class="language-javascript">db.find(/Value/);</code></pre>
                 </section>
+                <h3>Connecting the database</h3>
+                <p>To connect the database, you need to use the "login" method. This method allow the release of addons's events and make sure of the good behavior of the database.</p>
+                <pre><code class="language-javascript">db.login();</code></pre>
             </section>
         </section>
     </main>
