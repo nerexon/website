@@ -123,6 +123,11 @@ h2 {
     background-color: var(--warning-section-background-color);
 }
 
+.warning-section p {
+    font-size: 1.5em;
+    text-align: center;
+}
+
 
 /*******************/
 /*  Documentation  */
