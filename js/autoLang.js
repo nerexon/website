@@ -20,10 +20,16 @@ function execute(){
         window.location.href = fullPath;
         
     } else {
+        const hostname = window.location.hostname
         const port = window.location.port;
         const protocol = window.location.protocol;
 
-        splittedPath[0] = window.location.hostname + (port ? ":" + port : "");
+        if(hostname !== "nerexon.com"){
+            window.location.href = "https://nerexon.com/";
+            return;
+        }
+
+        splittedPath[0] = hostname + (port ? ":" + port : "");
         splittedPath[1] = "page";
         splittedPath[2] = language;
 
