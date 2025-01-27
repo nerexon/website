@@ -164,4 +164,8 @@ footer p {
     header > nav > ul > li > a:hover {
         background-color: var(--header-background-color);
     }
-  }
+
+    .left-aside {
+        flex-direction: column;
+    }
+}
