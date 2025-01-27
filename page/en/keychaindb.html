@@ -75,6 +75,30 @@ const db = new Database();</code></pre>
                 <p>To delete a valye within your database, you can use the "delete" method. You will need to specify a key.<br>In the following exemple, we are delete the value of a key called "Key".</p>
                 <pre><code class="language-javascript">db.delete("Key");</code></pre>
             </section>
+            <section>
+                <h3>Finding a key</h3>
+                <p>To find a value within your database, you can use the "find" method. You will need to specify a way of searching, there is a complete list.</p>
+                <section>
+                    <h4>Searching by value</h4>
+                    <p>You can search keys by specifying what values they should have. In the following exemple, we are getting every keys that the value is "Value".</p>
+                    <pre><code class="language-javascript">db.find("Value");</code></pre>
+                </section>
+                <section>
+                    <h4>Searching with JSON value</h4>
+                    <p>Searching by value also support using JSON to find keys. In the following exemple, we are getting every keys where the name is John and the age is 30.</p>
+                    <pre><code class="language-javascript">db.find({ name: "John", age: 30 });</code></pre>
+                </section>
+                <section>
+                    <h4>Searching with function</h4>
+                    <p>Searching with function is a powerful way to find keys. In the following exemple, we are getting every keys where the name is John and the age is higher than 25.</p>
+                    <pre><code class="language-javascript">db.find((value) => value.name === "John" && value.age > 25);</code></pre>
+                </section>
+                <section>
+                    <h4>Searching with regular expression (Regex)</h4>
+                    <p>The "find" method support searching with regular expression too. In the following exemple, we are getting every keys that contain the word "Value".</p>
+                    <pre><code class="language-javascript">db.find(/Value/);</code></pre>
+                </section>
+            </section>
         </section>
     </main>
     <footer>
