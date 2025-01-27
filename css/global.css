@@ -10,6 +10,10 @@
     --footer-background-color: #17362a;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background-color: var(--document-background-color);
     font-size: 1rem;
