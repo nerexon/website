@@ -5,6 +5,8 @@
     --warning-section-background-color: #ecb51d;
     --button-background-color: #166838;
     --button-hover-background-color: rgba(22, 104, 56, 0.4);
+    --darker-button-background-color: #0b4307;
+    --darker-button-hover-background-color: #083105;
     --footer-background-color: #17362a;
 }
 
@@ -76,6 +78,61 @@ main > section {
 h2 {
     font-size: 1.8em;
     text-align: center;
+}
+
+
+/******************/
+/*  Nerexon Logo  */
+/******************/
+
+#centered_logo {
+    display: block;
+    margin: auto;
+    max-width: 100%;
+    height: auto;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+
+/**************************/
+/*  Horizontal container  */
+/**************************/
+
+.main_container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.container {
+    display: inline-block;
+    max-width: 25vw;
+}
+
+.container p {
+    text-align: justify;
+}
+
+.container ul {
+    margin-top: 2em;
+    padding: 0;
+}
+
+.container li {
+    list-style: none;
+}
+
+.container a {
+    padding: 0.8em 1.2em;
+    background-color: var(--darker-button-background-color);
+    border-radius: 0.5em;
+    color: #fff;
+    text-decoration: none;
+}
+
+.container a:hover {
+    background-color: var(--darker-button-hover-background-color);
+    text-decoration: underline #fff;
 }
 
 
@@ -178,6 +235,14 @@ footer p {
 
     header > nav > ul > li > a:hover {
         background-color: var(--header-background-color);
+    }
+
+    .main_container {
+        flex-direction: column;
+    }
+
+    .container {
+        max-width: 100%;
     }
 
     .left-aside {
