@@ -99,6 +99,32 @@ h2 {
 }
 
 
+/************/
+/*  Tables  */
+/************/
+
+table {
+    margin: auto;
+    border: 2px solid #000;
+    border-radius: 0.5em;
+    border-style: hidden;
+    box-shadow: 0 0 0 2px #000;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+tr {
+    border-bottom: 2px solid #000;
+}
+
+th, td {
+    width: 20vw;
+    border-left: 2px solid #000;
+}
+
+
+
+
 /**************************/
 /*  Horizontal container  */
 /**************************/
