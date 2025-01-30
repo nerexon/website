@@ -3,6 +3,7 @@
     --document-background-color: #1e2f4a;
     --section-background-color: rgba(37, 222, 25, 0.3);
     --warning-section-background-color: #ecb51d;
+    --table-header-background-color: #105A3F;
     --button-background-color: #166838;
     --button-hover-background-color: rgba(22, 104, 56, 0.4);
     --darker-button-background-color: #0b4307;
@@ -106,10 +107,7 @@ h2 {
 table {
     margin: auto;
     border: 2px solid #000;
-    border-radius: 0.5em;
-    border-style: hidden;
-    box-shadow: 0 0 0 2px #000;
-    border-collapse: collapse;
+    border-collapse:collapse;
     text-align: center;
 }
 
@@ -122,7 +120,9 @@ th, td {
     border-left: 2px solid #000;
 }
 
-
+th {
+    background-color: var(--table-header-background-color);
+}
 
 
 /**************************/
