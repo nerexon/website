@@ -9,7 +9,8 @@ function execute(){
 
     const pathLanguage = splittedPath[2] || null;
 
-    if(pathLanguage && language){
+    if(pathLanguage){
+        if(!language)return;
         if(pathLanguage === language)return;
 
         splittedPath[0] = window.location.hostname + (port ? ":" + port : "");
