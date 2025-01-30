@@ -49,6 +49,42 @@
                 </section>
             </section>
         </section>
+        <section>
+            <h2>Documentation</h2>
+            <section>
+                <h3>Installation</h3>
+                <p>You can install Langpack with the following command :</p>
+                <pre><code class="language-bash">npm install langpack.js</code></pre>
+            </section>
+            <section>
+                <h3>Preparation</h3>
+                <p>Before using Langpack, you must do some simple preparations. At first, you must create the directory and the files where the translations will be stored.</p>
+                <pre><code class="language-text">languages
+    en.json
+    fr.json</code></pre>
+                <p>You must import the langpack.js module next and initializa the language manager class. The "LanguageManager" class require to specify the path of the directory where the translation JSON files are located.</p>
+                <pre><code class="language-javascript">const { LanguageManager } = require('langpack.js');
+const manager = new LanguageManager('./languages');</code></pre>
+                <p>The last step is to initialize the translator for every languages. You can use the "Translator" class to do so. You must specify the language.</p>
+                <pre><code class="language-javascript">const en = new manager.Translator('en');
+const fr = new manager.Translator('fr');</code></pre>
+            </section>
+            <section>
+                <h3>Translation</h3>
+                <p>You may now translate texts with the translator's "get" method. You must specify the key and the variables.</p>
+                <pre><code class="language-javascript">en.get("user.welcome", {username: "John"}); // "Welcome John!"</code></pre>
+            </section>
+            <section>
+                <h3>File exemple</h3>
+                <p>There is a small and simple exemple of a translation JSON file.</p>
+                <pre><code class="language-json">{
+    "user": {
+        "welcome": "Welcome {user}!",
+        "notification": "You received {count} notifications."
+    }
+}</code></pre>
+            </section>
+        </section>
     </main>
     <footer>
         <p>&copy;Copyright Nerexon | 2023 - 2025</p>
