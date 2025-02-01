@@ -23,14 +23,14 @@ function execute(){
         if(hostname !== "nerexon.com"  && !language){
             window.location.href = "https://nerexon.com/";
             return;
-        }
-        
-        splittedPath[0] = hostname + (port ? ":" + port : "");
-        splittedPath[1] = "page";
-        splittedPath[2] = language;
+        } else if(language){
+            splittedPath[0] = hostname + (port ? ":" + port : "");
+            splittedPath[1] = "page";
+            splittedPath[2] = language;
 
-        const fullPath = protocol + "//" + splittedPath.join("/") + "/home.html";
-        window.location.href = fullPath;
+            const fullPath = protocol + "//" + splittedPath.join("/") + "/home.html";
+            window.location.href = fullPath;
+        }
     }
 }
 
