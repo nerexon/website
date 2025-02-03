@@ -164,20 +164,23 @@ table {
 }
 
 .container {
-    max-width: 25vw;
+    width: 25vw;
 }
 
 .container p {
     text-align: justify;
 }
 
-.button-nav ul {
-    margin-top: 2em;
+.container ul {
     padding: 0;
 }
 
-.button-nav li {
+.container li {
     list-style: none;
+}
+
+.button-nav ul {
+    margin-top: 2em;
 }
 
 .button-nav a {
@@ -190,6 +193,15 @@ table {
 
 .button-nav a:hover {
     background-color: var(--darker-button-hover-background-color);
+    text-decoration: underline #fff;
+}
+
+.list-nav a{
+    color: #fff;
+    text-decoration: none;
+}
+
+.list-nav a:hover {
     text-decoration: underline #fff;
 }
 
@@ -300,7 +312,7 @@ footer p {
     }
 
     .container {
-        max-width: 100%;
+        width: 100%;
     }
 
     .container ul {
