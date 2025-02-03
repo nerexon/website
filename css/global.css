@@ -303,6 +303,14 @@ footer p {
         max-width: 100%;
     }
 
+    .container ul {
+        padding-bottom: 1em;
+    }
+
+    .container:not(:last-child){
+        border-bottom: 1px solid #000;
+    }
+
     .left-aside {
         flex-direction: column;
     }
