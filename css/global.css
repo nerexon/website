@@ -199,6 +199,7 @@ table {
 .list-nav a{
     color: #fff;
     text-decoration: none;
+    transition: all 0.2s;
 }
 
 .list-nav a:hover {
