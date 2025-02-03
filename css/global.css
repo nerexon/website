@@ -164,7 +164,6 @@ table {
 }
 
 .container {
-    display: inline-block;
     max-width: 25vw;
 }
 
