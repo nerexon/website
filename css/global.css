@@ -207,6 +207,32 @@ table {
 }
 
 
+/*************/
+/*  Tab Nav  */
+/*************/
+
+.tab-nav ul {
+    padding: 0;
+    padding-left: 1em;
+}
+
+.tab-nav li {
+    display: inline-block;
+    padding-right: 4em;
+    list-style: none;
+}
+
+.tab-nav a {
+    font-size: 1.5em;
+    text-decoration: none;
+    color: #000;
+}
+
+.tab-nav a:hover{
+    border-bottom: 2px solid #e92626;
+}
+
+
 /************************/
 /*  Informations Aside  */
 /************************/
