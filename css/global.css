@@ -171,16 +171,16 @@ table {
     text-align: justify;
 }
 
-.container ul {
+.button-nav ul {
     margin-top: 2em;
     padding: 0;
 }
 
-.container li {
+.button-nav li {
     list-style: none;
 }
 
-.container a {
+.button-nav a {
     padding: 0.8em 1.2em;
     background-color: var(--darker-button-background-color);
     border-radius: 0.5em;
@@ -188,7 +188,7 @@ table {
     text-decoration: none;
 }
 
-.container a:hover {
+.button-nav a:hover {
     background-color: var(--darker-button-hover-background-color);
     text-decoration: underline #fff;
 }
