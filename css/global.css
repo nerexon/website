@@ -282,6 +282,11 @@ table {
     text-align: center;
 }
 
+.wip{
+    float: left;
+    user-select: none;
+    -webkit-user-drag: none;
+}
 
 /*******************/
 /*  Documentation  */
