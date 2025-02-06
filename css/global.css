@@ -292,6 +292,19 @@ pre {
 }
 
 
+/************************/
+/*  License tabulation  */
+/************************/
+
+.secret-section {
+    display: none;
+}
+
+#secret-0 {
+    display: block;
+}
+
+
 /************/
 /*  Footer  */
 /************/
