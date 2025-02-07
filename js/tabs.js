@@ -18,7 +18,7 @@ function show(element) {
     setTimeout(() => {
         element.style.opacity = 1;
         element.style.transform = "scale(1)";
-    }, 10);
+    }, 100);
 }
 
 /**
