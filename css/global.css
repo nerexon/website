@@ -341,6 +341,12 @@ pre {
     display: block;
 }
 
+#bottomRightLogo {
+    position: absolute;
+    bottom: 1em;
+    right: 1em;
+}
+
 
 /************/
 /*  Footer  */
