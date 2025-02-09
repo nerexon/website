@@ -288,6 +288,14 @@ table {
     -webkit-user-drag: none;
 }
 
+#dataGif {
+    float: right;
+    user-select: none;
+    -webkit-user-drag: none;
+    width: 19vw;
+    border-radius: 1vw;
+}
+
 /*******************/
 /*  Documentation  */
 /*******************/
