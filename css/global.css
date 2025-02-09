@@ -247,6 +247,14 @@ table {
     border-bottom: 2px solid #e92626;
 }
 
+#mailLink {
+    list-style: url(../image/email_icon.svg);
+}
+
+#phoneLink {
+    list-style: url(../image/phone_icon.svg);
+}
+
 
 /************************/
 /*  Informations Aside  */
