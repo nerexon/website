@@ -167,15 +167,19 @@ table {
     width: 25vw;
 }
 
-.container p {
+.smallContainer {
+    width: 15vw;
+}
+
+.container p, .smallContainer p {
     text-align: justify;
 }
 
-.container ul {
+.container ul, .smallContainer ul {
     padding: 0;
 }
 
-.container li {
+.container li, .smallContainer li {
     list-style: none;
 }
 
