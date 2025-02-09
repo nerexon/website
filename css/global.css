@@ -192,6 +192,7 @@ table {
     background-color: var(--darker-button-background-color);
     border-radius: 0.5em;
     color: #fff;
+    font-weight: bold;
     text-decoration: none;
 }
 
@@ -203,11 +204,13 @@ table {
 .list-nav a{
     color: #fff;
     text-decoration: none;
+    font-style: italic;
     transition: all 0.2s;
 }
 
 .list-nav a:hover {
     text-decoration: underline #fff;
+    font-weight: bold;
 }
 
 
@@ -262,6 +265,7 @@ table {
 .left-aside nav a {
     color: #fff;
     text-decoration: none;
+    font-style: italic;
 }
 
 .left-aside nav a:hover {
