@@ -166,6 +166,7 @@ table {
 /**************************/
 
 .main_container {
+    position: relative;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
@@ -353,7 +354,6 @@ pre {
 /************/
 
 footer {
-    position: relative;
     margin: 1em;
     padding: 0.5em 1em;
     background-color: var(--footer-background-color);
