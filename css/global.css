@@ -417,4 +417,8 @@ footer p {
     .left-aside {
         flex-direction: column;
     }
+
+    img {
+        max-height: 50vh;
+    }
 }
