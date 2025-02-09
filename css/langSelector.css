@@ -28,6 +28,7 @@ ul {
 }
 
 li {
+    position: relative;
     display: inline-block;
     margin: 1em;
     width: 13em;
