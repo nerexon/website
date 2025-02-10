@@ -9,7 +9,7 @@ function execute(){
 
     const pathLanguage = splittedPath[2] || null;
 
-    if(pathLanguage){
+    if(pathLanguage !== "fr" && pathLanguage !== "en"){
         if(!language)return;
         if(pathLanguage === language)return;
 
