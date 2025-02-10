@@ -225,6 +225,10 @@ table {
     font-weight: bold;
 }
 
+.list-nav a:visited{
+    color: #eee;
+}
+
 
 /*************/
 /*  Tab Nav  */
