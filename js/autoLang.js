@@ -4,6 +4,10 @@ const hostname = window.location.hostname
 const port = window.location.port;
 const protocol = window.location.protocol;
 
+if(hostname !== "nerexon.com"){
+    window.location.href = "https://nerexon.com/";
+}
+
 function execute(){
     if(!splittedPath)return;
 
