@@ -20,7 +20,7 @@ function execute(){
         window.location.href = fullPath;
         
     } else {
-        if((hostname !== "nerexon.com"  && !language) || !hostname){
+        if(hostname !== "nerexon.com"){
             window.location.href = "https://nerexon.com/";
             return;
         } else if(language){
