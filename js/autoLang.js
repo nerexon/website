@@ -24,7 +24,7 @@ function execute(){
             window.location.href = "https://nerexon.com/";
             return;
         } else if(language){
-            splittedPath[0] = hostname + (port ? ":" + port : "");
+            splittedPath[0] = "nerexon.com";
             splittedPath[1] = "page";
             splittedPath[2] = language;
 
