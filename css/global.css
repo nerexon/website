@@ -31,7 +31,6 @@ header {
     padding: 1em 1em 0 1em;
     border-radius: 1em;
     background-color: var(--header-background-color);
-    background-image: url(../image/header_magic.png);
     background-repeat: repeat-x;
     user-select: none;
     box-shadow: 0 0 2em var(--header-background-color);
@@ -364,7 +363,6 @@ footer {
     margin: 1em;
     padding: 0.5em 1em;
     background-color: var(--footer-background-color);
-    background-image: url(../image/footer_magic.png);
     background-position-y: bottom;
     background-repeat: repeat-x;
     border-radius: 1em;
