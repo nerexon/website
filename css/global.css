@@ -426,5 +426,6 @@ footer p {
 
     #links .smallContainer {
         margin: auto;
+        width: initial;
     }
 }
