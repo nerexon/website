@@ -1,97 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Langpack is a language management software for Node.js.">
-    <title>Langpack - Nerexon</title>
-    <link rel="stylesheet" href="/css/normalize.css">
-    <link rel="stylesheet" href="/css/global.css">
-    <link rel="stylesheet" href="/css/prism.css">
-    <script src="/js/autoLang.js"></script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8808680955938027"
-     crossorigin="anonymous"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Langpack is a language management module for Node.js." />
+  <title>Langpack - Nerexon</title>
+  <link rel="stylesheet" href="/css/normalize.css" />
+  <link rel="stylesheet" href="/css/global.css" />
+  <link rel="stylesheet" href="/css/prism.css" />
+  <script src="/js/autoLang.js"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8808680955938027" crossorigin="anonymous"></script>
 </head>
 <body>
-    <header>
-        <h1>Nerexon - Langpack</h1>
-        <nav>
+  <header>
+    <h1>Nerexon - Langpack</h1>
+    <nav>
+      <ul>
+        <li><a href="/page/en/home.html">Home</a></li>
+        <li><a href="/page/en/home.html#projects">Projects</a></li>
+        <li><a href="/page/en/home.html#about">About Us</a></li>
+      </ul>
+      <ul>
+        <li><a href="/page/fr/langpack.html" id="fr">Français</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="warning-section">
+      <h2>Warning</h2>
+      <p>This website does not use Langpack, as it is not designed for static websites.</p>
+    </section>
+
+    <section>
+      <h2>Information</h2>
+      <section class="left-aside">
+        <aside>
+          <h3>Important Links</h3>
+          <nav>
             <ul>
-                <li><a href="/page/en/home.html">Home</a></li>
-                <li><a href="/page/en/home.html#projects">Projects</a></li>
-                <li><a href="/page/en/home.html#about">About Us</a></li>
+              <li><a href="https://www.npmjs.com/package/langpack.js">NPM Page</a></li>
+              <li><a href="https://github.com/nerexon/langpack">GitHub Repo</a></li>
             </ul>
-            <ul>
-                <li><a href="/page/fr/langpack.html" id="fr">Français</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <section class="warning-section">
-            <h2>Warning</h2>
-            <p>This website wasn't made using Langpack as it is not made for static website.</p>
-        </section>
+          </nav>
+        </aside>
+
         <section>
-            <h2>Informations</h2>
-            <section class="left-aside">
-                <aside>
-                    <h3>Important links</h3>
-                    <nav>
-                        <ul>
-                            <li><a href="https://www.npmjs.com/package/langpack.js">NPM Page</a></li>
-                            <li><a href="https://github.com/nerexon/langpack">Github Repo</a></li>
-                        </ul>
-                    </nav>
-                </aside>
-                <section>
-                    <section>
-                        <h3>What is it ?</h3>
-                        <p>Langpack is a module for translating <em>Node.js</em> Javascript applications. It's an easy-to-use system that's fast and efficient. It allows you to use JSON files to translate your application.</p>
-                    </section>
-                </section>
-            </section>
+          <h3>What is Langpack?</h3>
+          <p><strong>Langpack</strong> is a lightweight Node.js module for translating JavaScript applications. It is fast, easy to use, and requires no external dependencies. Translations are stored in simple JSON files and accessed through a key-based system with optional placeholder replacement.</p>
         </section>
-        <section>
-            <h2>Documentation</h2>
-            <section>
-                <h3>Installation</h3>
-                <p>You can install Langpack with the following command :</p>
-                <pre><code class="language-bash">npm install langpack.js</code></pre>
-            </section>
-            <section>
-                <h3>Preparation</h3>
-                <p>Before using Langpack, you must do some simple preparations. At first, you must create the directory and the files where the translations will be stored.</p>
-                <pre><code class="language-text">languages
-    en.json
-    fr.json</code></pre>
-                <p>You must import the langpack.js module next and initializa the language manager class. The "LanguageManager" class require to specify the path of the directory where the translation JSON files are located.</p>
-                <pre><code class="language-javascript">const { LanguageManager } = require('langpack.js');
+      </section>
+    </section>
+
+    <section>
+      <h2>Documentation</h2>
+
+      <section>
+        <h3>Installation</h3>
+        <p>Install Langpack using npm:</p>
+        <pre><code class="language-bash">npm install langpack.js</code></pre>
+      </section>
+
+      <section>
+        <h3>Preparation</h3>
+        <p>Create a directory named <code>languages</code> with your translation files:</p>
+        <pre><code class="language-text">languages/
+  en.json
+  fr.json</code></pre>
+
+        <p>Then, import and initialize the language manager with the path to your directory:</p>
+        <pre><code class="language-javascript">const { LanguageManager } = require('langpack.js');
 const manager = new LanguageManager('./languages');</code></pre>
-                <p>The last step is to initialize the translator for every languages. You can use the "Translator" class to do so. You must specify the language.</p>
-                <pre><code class="language-javascript">const en = new manager.Translator('en');
-const fr = new manager.Translator('fr');</code></pre>
-            </section>
-            <section>
-                <h3>Translation</h3>
-                <p>You may now translate texts with the translator's "get" method. You must specify the key and the variables.</p>
-                <pre><code class="language-javascript">en.get("user.welcome", {username: "John"}); // "Welcome John!"</code></pre>
-            </section>
-            <section>
-                <h3>File exemple</h3>
-                <p>There is a small and simple exemple of a translation JSON file.</p>
-                <pre><code class="language-json">{
-    "user": {
-        "welcome": "Welcome {user}!",
-        "notification": "You received {count} notifications."
-    }
+      </section>
+
+      <section>
+        <h3>Translation Usage</h3>
+        <p>To retrieve translations, use the <code>get</code> method. It accepts the locale, the key, and an optional object of variables to replace:</p>
+        <pre><code class="language-javascript">manager.get("en", "user.welcome", { user: "John" }); // "Welcome John!"</code></pre>
+      </section>
+
+      <section>
+        <h3>Example Translation File</h3>
+        <p>Here is a simple example of a translation JSON file:</p>
+        <pre><code class="language-json">{
+  "user": {
+    "welcome": "Welcome {user}!",
+    "notification": "You received {count} notifications."
+  }
 }</code></pre>
-            </section>
-        </section>
-    </main>
-    <footer>
-        <p>&copy;Copyright Nerexon | 2023 - 2025</p>
-    </footer>
-    <script src="/js/prism.js"></script>
-    <script src="/js/langSelector.js"></script>
+      </section>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; Copyright Nerexon | 2023 - 2025</p>
+  </footer>
+
+  <script src="/js/prism.js"></script>
+  <script src="/js/langSelector.js"></script>
 </body>
 </html>
